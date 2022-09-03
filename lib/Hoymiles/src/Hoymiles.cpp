@@ -2,6 +2,7 @@
 #include "inverters/HM_1CH.h"
 #include "inverters/HM_2CH.h"
 #include "inverters/HM_4CH.h"
+#include "inverters/HM_6CH.h"
 #include <Arduino.h>
 
 HoymilesClass Hoymiles;
@@ -50,7 +51,9 @@ void HoymilesClass::loop()
 std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, uint64_t serial)
 {
     std::shared_ptr<InverterAbstract> i = nullptr;
-    if (HM_4CH::isValidSerial(serial)) {
+    if (HM_6CH::isValidSerial(serial)) {
+        i = std::make_shared<HM_6CH>(serial);
+    } else if (HM_4CH::isValidSerial(serial)) {
         i = std::make_shared<HM_4CH>(serial);
     } else if (HM_2CH::isValidSerial(serial)) {
         i = std::make_shared<HM_2CH>(serial);

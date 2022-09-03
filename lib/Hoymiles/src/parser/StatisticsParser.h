@@ -14,7 +14,7 @@ enum {
     UNIT_KWH,
     UNIT_HZ,
     UNIT_C,
-    UNIT_PCT,
+    UNIT_PCT,       // Percent
     UNIT_VA,
     UNIT_CNT
 };
@@ -22,21 +22,21 @@ const char* const units[] = { "V", "A", "W", "Wh", "kWh", "Hz", "°C", "%", "var
 
 // field types
 enum {
-    FLD_UDC = 0,
-    FLD_IDC,
-    FLD_PDC,
-    FLD_YD,
-    FLD_YT,
-    FLD_UAC,
-    FLD_IAC,
-    FLD_PAC,
-    FLD_F,
-    FLD_T,
-    FLD_PCT,
-    FLD_EFF,
-    FLD_IRR,
-    FLD_PRA,
-    FLD_EVT_LOG
+    FLD_UDC = 0,    // DC Voltage
+    FLD_IDC,        // DC Current
+    FLD_PDC,        // Power
+    FLD_YD,         // Yield - day
+    FLD_YT,         // Total yield
+    FLD_UAC,        // Voltage
+    FLD_IAC,        // Current (AC)
+    FLD_PAC,        // Power (active or AC)
+    FLD_F,          // Frequency
+    FLD_T,          // Temperature
+    FLD_PCT,        // Power factor
+    FLD_EFF,        // Efficiency
+    FLD_IRR,        // Irradiation
+    FLD_PRA,        // Reactive power
+    FLD_EVT_LOG     // Event log count
 };
 const char* const fields[] = { "Voltage", "Current", "Power", "YieldDay", "YieldTotal",
     "Voltage", "Current", "Power", "Frequency", "Temperature", "PowerFactor", "Efficiency", "Irradiation", "ReactivePower", "EventLogCount" };
@@ -58,7 +58,9 @@ enum {
     CH1,
     CH2,
     CH3,
-    CH4
+    CH4,
+    CH5,
+    CH6,
 };
 
 typedef struct {
